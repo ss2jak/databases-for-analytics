@@ -1,6 +1,6 @@
 # Exercise 01: World Database SQL Practice
 
-- Name:
+- Name:Jak
 - Course: Database for Analytics
 - Module: 1
 - Database Used: World Database
@@ -33,9 +33,9 @@ See:
 
 Why were these data types selected?
 
-### Answer
+### Data type  for Population is "int" and for LifeExpectancy is "decimal 3,1."
 
-_Write your explanation here._
+_Write your explanation here.
 
 ### Screenshot
 
@@ -54,7 +54,7 @@ DESCRIBE country;
 **What is the data type of `country.IndepYear`?**
 Why do you think this data type was selected?
 
-### Answer
+### small int
 
 _Write your explanation here._
 
@@ -73,7 +73,7 @@ DESCRIBE country;
 **Make a case for a different data type for `country.IndepYear`.**
 Explain why your proposed data type might be better in some situations.
 
-### Answer
+### Right now the dataetype is small itn
 
 _Write your explanation here._
 

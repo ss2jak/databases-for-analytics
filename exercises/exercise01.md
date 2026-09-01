@@ -31,11 +31,10 @@ See:
 - `country.Population`
 - `country.LifeExpectancy`
 
-Why were these data types selected?
+Why were these data typesiiii selected?
 
 ### Data type  for Population is "int" and for LifeExpectancy is "decimal 3,1."
-
-_Write your explanation here.
+Because we are dealing with human beings, the count must be a whole number. Since life expectancy is a calculated average it will usually always be a decimal. The precision and scale limit values to have to be betwwen 0.0 and 99.9.
 
 ### Screenshot
 
@@ -56,8 +55,7 @@ Why do you think this data type was selected?
 
 ### small int
 
-_Write your explanation here._
-
+To save storage since its perfect since we're daealing with years majority of it will be 4 digits and it can go negetaive for BC if applicable.
 ### Screenshot
 
 ```sql
@@ -73,9 +71,7 @@ DESCRIBE country;
 **Make a case for a different data type for `country.IndepYear`.**
 Explain why your proposed data type might be better in some situations.
 
-### Right now the dataetype is small itn
-
-_Write your explanation here._
+DATE can be used to get the full date of independence to be more accurate.
 
 ---
 
@@ -159,10 +155,13 @@ Write a SQL command to **update the city named `"Nashville-Davidson"` to `"Nashv
 ### SQL
 
 ```sql
+SET SQL_SAFE_UPDATES = 0;
 UPDATE city
 SET Name = 'Nashville'
 WHERE Name = 'Nashville-Davidson';
+SET SQL_SAFE_UPDATES = 1;
 ```
+Update city Set Name = 'Nashville' Where Name = 'Nashville-Davidson';
 
 ### Screenshot
 

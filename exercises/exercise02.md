@@ -1,6 +1,6 @@
 # Exercise 02: World Database – Joins, Grouping, and Data Quality
 
-- Name:
+- Name:Jak
 - Course: Database for Analytics
 - Module: 2
 - Database Used: World Database (PostgreSQL)
@@ -31,7 +31,7 @@ _Write the number of cities imported._
 _Show evidence of how you determined this (for example, a COUNT query)._
 
 ```sql
--- Your SQL here
+SELECT COUNT(*) FROM city;
 ```
 
 ![Q1 Screenshot](screenshots/q1_city_count.png)
@@ -47,7 +47,10 @@ along with the **name of each language spoken in that country**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT country.name, countrylanguage.language
+FROM country
+JOIN countrylanguage
+ON country.code = countrylanguage.countrycode;
 ```
 
 ### Screenshot
@@ -65,7 +68,12 @@ of each **official language spoken in that country**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT country.name, countrylanguage.language
+FROM country
+JOIN countrylanguage
+ON country.code = countrylanguage.countrycode
+WHERE countrylanguage.isofficial= 'T'
+ORDER BY country.name;
 ```
 
 ### Screenshot
@@ -96,7 +104,7 @@ ON country.code = countrylanguage.countrycode;
 
 ### Answer
 
-_Write your explanation here._
+The 2nd query uses a `LEFT JOIN`, which shows all the countries from the `country` table, even if they don't have matching information in the `countrylanguage` table. Whereas, the 1st query only shows the countries that have matching information in both tables.
 
 ---
 
@@ -109,7 +117,8 @@ Do **not** repeat any form of government more than once.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT DISTINCT governmentform from country
+ORDER BY governmentform;
 ```
 
 ### Screenshot
@@ -127,7 +136,11 @@ Label the column **"City or Country Name"**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT name AS "City or Country Name"
+FROM city
+UNION
+SELECT name AS "City or Country Name"
+FROM country;
 ```
 
 ### Screenshot
@@ -146,7 +159,12 @@ Be sure to **sort by country name**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT country.name, COUNT(countrylanguage.language) AS number_of_languages
+FROM country
+LEFT OUTER JOIN countrylanguage
+ON country.code = countrylanguage.countrycode
+GROUP BY country.name
+ORDER BY number_of_languages DESC;
 ```
 
 ### Screenshot
@@ -165,7 +183,10 @@ Be sure to **sort by language name**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT language, COUNT(countrycode) AS number_of_countries
+FROM countrylanguage
+GROUP BY language
+ORDER BY language;
 ```
 
 ### Screenshot
@@ -185,7 +206,14 @@ _Hint: There are 8 such countries in this dataset._
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT country.name, COUNT(countrylanguage.language) AS number_of_official_languages
+FROM country
+JOIN countrylanguage
+ON country.code = countrylanguage.countrycode
+WHERE countrylanguage.isofficial = 'T'
+GROUP BY country.name
+HAVING COUNT(countrylanguage.language) > 2
+ORDER BY number_of_official_languages;
 ```
 
 ### Screenshot
@@ -205,7 +233,10 @@ since some rows use that instead of actual data.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT *
+FROM city
+WHERE district LIKE '-%'
+   OR district LIKE '–%';
 ```
 
 ### Screenshot
@@ -224,7 +255,14 @@ _Hint: The result should be approximately 0.4%._
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+COUNT(CASE
+WHEN district LIKE '-%'
+OR district LIKE '–%'
+OR district = ''
+THEN 1
+END) * 100.0 / COUNT(*) AS missing_district
+FROM city;
 ```
 
 ### Screenshot

@@ -24,7 +24,7 @@ When importing records from `worldPGSQL.sql`, **how many cities were imported**?
 
 ### Answer
 
-_Write the number of cities imported._
+4079
 
 ### Screenshot
 

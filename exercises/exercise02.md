@@ -123,7 +123,7 @@ ORDER BY governmentform;
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![Q5 Screenshot](screenshots/q5_government_forms2.png)
 
 ---
 

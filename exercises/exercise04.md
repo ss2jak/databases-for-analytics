@@ -92,7 +92,18 @@ to produce the following graph:
 ### Python Code
 
 ```python
-# Your Python code here
+import matplotlib.pyplot as plt
+
+df.plot(
+    x="name",
+    y="number_official_languages",
+    kind="bar",
+)
+
+plt.xlabel("Country")
+plt.ylabel("Number of Official Languages")
+plt.title("Countries with More Than Two Official Languages")
+plt.show()
 ```
 
 ### Screenshot

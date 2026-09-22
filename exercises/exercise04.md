@@ -34,12 +34,21 @@ along with the **number of official languages spoken**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT country.Name,
+       COUNT(countrylanguage.Language) AS Number_Official_Languages
+FROM country
+JOIN countrylanguage
+    ON country.Code = countrylanguage.CountryCode
+WHERE countrylanguage.isofficial = 'T'
+GROUP BY country.Name
+HAVING COUNT(countrylanguage.Language) > 2
+ORDER BY Number_Official_Languages DESC;
+
 ```
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_official_language_counts.png)
+![Q1 Screenshot](screenshots/q1_official_language_counts.jpg)
 
 ---
 
@@ -56,7 +65,13 @@ execute the query from Question 1 and
 ### Python Code
 
 ```python
-# Your three Python statements here
+connection = engine.connect()
+
+result = connection.execute(text("SELECT * FROM country LIMIT 5"))
+
+df = pd.DataFrame(result.fetchall(), columns=result.keys())
+
+df
 ```
 
 ### Screenshot

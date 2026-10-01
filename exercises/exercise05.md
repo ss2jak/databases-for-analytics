@@ -43,8 +43,10 @@ year
 ### SQL
 
 ```sql
--- Your SQL here
-```
+SELECT DISTINCT
+    EXTRACT(YEAR FROM sent_date)::INTEGER AS year
+FROM emails
+ORDER BY year;```
 
 ### Screenshot
 
@@ -127,6 +129,17 @@ After looking at the data, **why is this the case?**
 
 ### Answer
 
+SELECT
+    e.email_id,
+    c.customer_id,
+    c.state,
+    e.sent_date,
+    e.opened_date
+FROM emails AS e
+INNER JOIN customers AS c
+    ON e.customer_id = c.customer_id
+WHERE e.opened_date < e.sent_date
+ORDER BY e.sent_date;
 _Write your explanation here._
 
 ### Screenshot (if requested by instructor)
@@ -167,8 +180,7 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 ```
 
 ### Answer
-
-_Write your explanation here._
+Createas a table called customer pints conbining long and latitute form the customers where the long ang and lat arent empty.
 
 ---
 

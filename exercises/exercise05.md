@@ -209,10 +209,6 @@ Using the `sqlda` database, write SQL to display:
 
 Sort by **state**.
 
-Reference image:
-
-![05-ExerciseArray](./instructions/05-ExerciseArray.jpg)
-
 ### SQL
 
 ```sql
@@ -262,10 +258,6 @@ Using the `sqlda` database, write SQL to display:
 - sorted by **state**
 
 Then **convert this result to JSON**.
-
-Reference image:
-
-![05-ExerciseArray-1](./instructions/05-ExerciseArray-1.jpg)
 
 ### SQL
 

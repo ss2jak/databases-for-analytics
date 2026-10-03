@@ -25,28 +25,14 @@
 
 Using the `sqlda` database, write the SQL needed
 to show a **list of years** that emails were sent.
-
-Your results should list years like this (order matters):
-
-```text
-year
-2011
-2013
-2014
-2015
-2016
-2017
-2018
-2019
-```
-
 ### SQL
 
 ```sql
 SELECT DISTINCT
     EXTRACT(YEAR FROM sent_date)::INTEGER AS year
 FROM emails
-ORDER BY year;```
+ORDER BY year;
+```
 
 ### Screenshot
 
@@ -59,13 +45,6 @@ ORDER BY year;```
 Using the `sqlda` database, write the SQL needed to
 show the **number of messages sent by year**,
 ordered by year (as shown in the prompt).
-
-Output should resemble:
-
-```text
-count   year
-...
-```
 
 ### SQL
 
@@ -141,7 +120,7 @@ that contain an opened date **BEFORE** the sent date.
 After looking at the data, **why is this the case?**
 
 ### Answer
-
+```sql
 SELECT
     e.email_id,
     c.customer_id,
@@ -153,9 +132,8 @@ INNER JOIN customers AS c
     ON e.customer_id = c.customer_id
 WHERE e.opened_date < e.sent_date
 ORDER BY e.sent_date;
-_Write your explanation here._
 
-### Screenshot (if requested by instructor)
+### Screenshot
 
 ![Q5 Screenshot](screenshots/q5_explain_date_issue.png)
 
@@ -202,12 +180,6 @@ Using the `sqlda` database,
 write SQL to display an
 **array of salespeople for each dealership**,
 sorted by dealership.
-
-For example - dealership 1 is below:
-
-```text
-"{""Fidell,Granville"",""Onele,Jereme"",""Sheriff,Lelia"",""McSpirron,Massimiliano"",""Rennick,Nadia"",""Mace,Eveleen"",""Oxteby,Dukie"",""Spong,Marcos"",""Wogden,Quent"",""Duny,Sandye"",""Loraine,Englebert"",""Meere,Ira"",""Gibbens,Cristine"",""Prine,Lyda"",""McCoughan,Sheff"",""Schule,Giselbert"",""McAndie,Eleen"",""Dosedale,Dorie"",""Nafziger,Shay""}"
-```
 
 ### SQL
 

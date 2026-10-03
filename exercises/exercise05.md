@@ -54,7 +54,7 @@ SELECT
     COUNT(*) AS email_count
 FROM emails
 GROUP BY 1
-ORDER BY year;our SQL here
+ORDER BY year;
 ```
 
 ### Screenshot
@@ -81,7 +81,8 @@ SELECT
     opened_date,
     opened_date - sent_date AS interval
 FROM emails
-WHERE sent_date IS NOT NULL AND opened_date IS NOT NULL;```
+WHERE sent_date IS NOT NULL AND opened_date IS NOT NULL;
+```
 
 ### Screenshot
 
@@ -132,6 +133,7 @@ INNER JOIN customers AS c
     ON e.customer_id = c.customer_id
 WHERE e.opened_date < e.sent_date
 ORDER BY e.sent_date;
+```
 
 ### Screenshot
 
@@ -188,7 +190,8 @@ SELECT dealership_id,
        ARRAY_AGG(last_name || ',' || first_name) AS salespeople
 FROM salespeople
 GROUP BY dealership_id
-ORDER BY dealership_id;```
+ORDER BY dealership_id;
+```
 
 ### Screenshot
 
@@ -240,7 +243,8 @@ the **customers** table to **JSON**.
 
 ```sql
 SELECT ROW_TO_JSON(customers)
-FROM customers;```
+FROM customers;
+```
 
 ### Screenshot
 
@@ -283,7 +287,8 @@ FROM (
         d.state
     ORDER BY
         d.state
-) AS dealership_info;```
+) AS dealership_info;
+```
 
 ### Screenshot
 

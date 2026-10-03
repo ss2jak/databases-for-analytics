@@ -70,7 +70,12 @@ count   year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    EXTRACT(YEAR FROM sent_date)::INTEGER AS year,
+    COUNT(*) AS email_count
+FROM emails
+GROUP BY 1
+ORDER BY year;our SQL here
 ```
 
 ### Screenshot
@@ -92,8 +97,12 @@ Only include emails that contain **both** a sent date and an opened date.
 ### SQL
 
 ```sql
--- Your SQL here
-```
+SELECT
+ 	sent_date,
+    opened_date,
+    opened_date - sent_date AS interval
+FROM emails
+WHERE sent_date IS NOT NULL AND opened_date IS NOT NULL;```
 
 ### Screenshot
 
@@ -110,7 +119,11 @@ show emails that contain an **opened date BEFORE the sent date**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    sent_date,
+    opened_date
+FROM emails
+WHERE opened_date < sent_date;
 ```
 
 ### Screenshot
@@ -180,8 +193,7 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 ```
 
 ### Answer
-Createas a table called customer pints conbining long and latitute form the customers where the long ang and lat arent empty.
-
+The query creates three temporary tables to combine customer and dealership locations and calculate the distance between every customer and every dealership using their longitude and latitude.
 ---
 
 ## Question 7
@@ -200,8 +212,11 @@ For example - dealership 1 is below:
 ### SQL
 
 ```sql
--- Your SQL here
-```
+SELECT dealership_id,
+       ARRAY_AGG(last_name || ',' || first_name) AS salespeople
+FROM salespeople
+GROUP BY dealership_id
+ORDER BY dealership_id;```
 
 ### Screenshot
 
@@ -226,7 +241,16 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+    d.dealership_id,
+    d.state,
+    ARRAY_AGG(s.last_name || ', ' || s.first_name) AS salespeople,
+    COUNT(s.salesperson_id) AS number_of_salespeople
+FROM dealerships d
+JOIN salespeople s
+    ON d.dealership_id = s.dealership_id
+GROUP BY d.dealership_id,d.state
+ORDER BY d.state;
 ```
 
 ### Screenshot
@@ -243,8 +267,8 @@ the **customers** table to **JSON**.
 ### SQL
 
 ```sql
--- Your SQL here
-```
+SELECT ROW_TO_JSON(customers)
+FROM customers;```
 
 ### Screenshot
 
@@ -270,8 +294,24 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
-```
+SELECT ROW_TO_JSON(dealership_info)
+FROM (
+    SELECT
+        d.dealership_id,
+        d.state,
+        COUNT(s.salesperson_id) AS num_salespeople,
+        ARRAY_AGG(
+            s.last_name || ',' || s.first_name
+        )
+    FROM dealerships d
+    JOIN salespeople s
+        ON d.dealership_id = s.dealership_id
+    GROUP BY
+        d.dealership_id,
+        d.state
+    ORDER BY
+        d.state
+) AS dealership_info;```
 
 ### Screenshot
 

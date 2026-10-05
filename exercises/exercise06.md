@@ -2,7 +2,7 @@
 
 From the Operational Model to the Dimensional Model
 
-- Name:
+- Name:Jak
 - Course: Database for Analytics
 - Module: 6
 

@@ -95,19 +95,8 @@ Your model must clearly show:
 
 ### 1) Star Schema Diagram (Required)
 
-Create and submit a **diagram** of your star schema.
-
-You may use any tool, such as:
-
-- draw.io (diagrams.net)
-- PowerPoint
-- Google Drawings
-- Lucidchart
-- Hand-drawn on paper (then take a clear photo)
-
-Save your diagram image in this repo and embed it below.
-
-**File name suggestion:** `star-schema.png` or `star-schema.jpg`
+Used drawddb.app to draw diagram.
+https://www.drawdb.app/editor/diagrams/35449e6b-b24b-405f-9e73-279367d7a7d9
 
 #### Diagram
 

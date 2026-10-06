@@ -96,8 +96,6 @@ Your model must clearly show:
 ### 1) Star Schema Diagram (Required)
 
 Used drawddb.app to draw diagram.
-https://www.drawdb.app/editor/diagrams/35449e6b-b24b-405f-9e73-279367d7a7d9
-
 #### Diagram
 
 ![Star Schema Diagram](screenshots/star-schema.png)
@@ -113,4 +111,5 @@ In 1-2 short paragraphs, explain:
 
 #### Design Notes
 
-_Write your design notes here._
+The 3 main dimensions i chose were date, customer and parts. Date breaks things down by day, month, quarter, and year which can be used to analyze sales over period of time.Customer keeps track of who is buying, including location info zip code so we can see sales by location. Part holds the item details like part number, description, and category.
+The fact_daily_sales table is based on a daily sales grain, meaning each record represents sales for a specific customer, part, and day. The fact table only stores the required measures, amount and quantity, while the dimension keys connect the sales back to the Date, Customer, and Part tables. This setup makes it possible to answer questions such as how many AX12 parts were sold, how much a customer spent, average daily sales during a specific quarter, and how much revenue came from customers in a particular zip code.

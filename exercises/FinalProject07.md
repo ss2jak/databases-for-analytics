@@ -24,10 +24,6 @@
 
 [I selected this data because, as a gamer myself, I wanted to find a dataset I was personally interested in. The dataset included information on Steam, PlayStation, and Xbox players. I chose Xbox because although I have a PlayStation now, I had more enjoyable gaming experiences on Xbox.]
 
-### Screenshot
-
-![Initial Data Source](screenshots/initial_data_source.png)
-
 ---
 
 ## 2. Data Format and Dataset Size
